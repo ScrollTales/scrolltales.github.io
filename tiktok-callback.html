@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Connecting TikTok · ScrollTales</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Connecting TikTok…</h1>
+  <p class="muted" id="msg">Handing the sign-in back to StoryShorts on this computer.</p>
+</main>
+<script>
+  // TikTok only accepts https redirect addresses, so it sends the one-time code here; this page passes it straight
+  // to the StoryShorts dashboard running on this same computer. Nothing is stored or sent anywhere else.
+  if (location.search) {
+    location.replace("http://localhost:8000/oauth/tiktok/callback" + location.search);
+  } else {
+    document.getElementById("msg").textContent = "Nothing to do here: start from StoryShorts → Settings → Connect TikTok.";
+  }
+</script>
+</body>
+</html>
